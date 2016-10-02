@@ -1,5 +1,5 @@
 var Users = require('../datasets/users');
-var db = require('.../server.js');
+
 
 module.exports.signup = function (req, res){
 
@@ -13,6 +13,9 @@ module.exports.signup = function (req, res){
 		});
 		res.end('Added the user with id: ' + id);
 	});
+
+
+
 
 	};
 
