@@ -1,0 +1,76 @@
+<div class="container" ng-controller="DashboardController">
+	<div class="row row1">
+		<div class="col-md-2" style="height:100%;">
+			<div class="col-sm-6 col-sm-offset-2">
+				<h4 style="margin-left:45%;">Hello, {{username}}</h4></div>
+
+		</div>
+
+		<div class="col-md-8" style="height:200%;">
+			<h3>Tasks</h3>
+			<table class="table table-striped">
+				<tr>
+					<th>Name</th>
+					<th>Achieved</th>
+					<th>Action</th>
+
+				</tr>
+				<tr ng-repeat="goal in userGoals">
+					<td>{{goal.goalName}}</td>
+					<td><input type="checkbox" ng-checked="goal.goalProgress" ng-click="achieve(goal)"></td>
+					<td>
+						<button class="btn btn-danger" ng-click="deleteGoal(goal, $index)">x</button>
+						<button class="btn btn-info" ng-click="showEdit()">edit</button>
+							<form ng-submit="updateGoal(goal)">
+					<input ng-if="editingGoal"
+						class="todos__update-input"
+						ng-model="goal.updatedGoal"/>
+				</form>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+			<div class="col-md-2" style="height:100%;">
+			<button class="btn btn-lg btn-circle btn-primary" style="position: absolute; bottom: 0;
+	right: 0;" data-toggle="modal" data-target="#goaltask-modal">+</button>
+		</div>
+
+	</div>
+
+
+
+
+	<div class="modal fade" id="goaltask-modal" role="dialog" ng-controller="HeaderController">
+		<div class="modal-dialog">
+			<div class="loginmodal-container">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#home">Task</a></li>
+					<li><a data-toggle="tab" href="#menu1">Goal</a></li>
+				</ul>
+				<div class="tab-content">
+					<div id="home" class="tab-pane fade in active">
+						<h3>Set New Task</h3>
+						<form method="POST" name="goalTaskForm">
+							<input class="form-control todos__create-input" type="text" placeholder="What do I need to do?" name="goalStuff" ng-model="goal.goalName" />
+							<br>
+							<button class="btn btn-success todos__create-button" ng-click="setGoal()">Submit</button>
+						</form>
+					</div>
+					<div id="menu1" class="tab-pane fade">
+						<h3>Cooming soon :) </h3>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+</div>

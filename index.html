@@ -1,0 +1,57 @@
+<!doctype html>
+<html ng-app="dovalley">
+
+<head>
+	<title>Achievely</title>
+	<base href="/"> </head>
+
+
+		<!--Including Css -->
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="src/css/mystyles.css">
+
+<body>
+
+	<div ui-view="header"></div>
+
+	<div ui-view="content"></div>
+
+	<div ui-view="footer"></div>
+
+
+
+	<!--Including Scripts -->
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="config.js"></script>
+
+	<!--Controllers -->
+	<script src="public/Controllers/headerController.js"></script>
+	<script src="public/Controllers/landingController.js"></script>
+	<script src="public/Controllers/dashboardController.js"></script>
+
+
+
+ <div class="modal fade" id="login-modal"  role="dialog" ng-controller="HeaderController">
+		  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Login to Your Account</h1><br>
+				  <form data-toggle="validator" role="form" id="myForm" ng-submit="logUserIn()" novalidate>
+					<input type="text" name="user" placeholder="Username" ng-model="login.username" required="true">
+					<input type="password" name="pass" placeholder="Password" ng-model="login.password" required>
+					<input type="submit" id="submitModal"  name="login" class="login loginmodal-submit" value="Login">
+				  </form>
+
+				  <div class="login-help">
+				 <a href="#">Forgot Password</a>
+				  </div>
+				</div>
+			</div>
+		  </div>
+
+
+</body>
+
+</html>
