@@ -1,8 +1,9 @@
 var Users = require('../datasets/users');
+var db = require('.../server.js');
 
 module.exports.signup = function (req, res){
 
-
+/**
 		Users.create(req.body, function (err, user) {
 		if (err) throw err;
 		console.log('User created!');
@@ -12,9 +13,21 @@ module.exports.signup = function (req, res){
 		});
 		res.end('Added the user with id: ' + id);
 	});
+**/
 
 
-};
+		  db.collection(Users).insertOne(req.body, function(err, doc) {
+		if (err) throw err;
+		console.log('User created!');
+		var id = user._id;
+		res.writeHead(200, {
+			'Content-Type': 'text/plain'
+		});
+		res.end('Added the user with id: ' + id);
+
+	}
+
+	)};
 
 module.exports.login = function (req, res){
 	Users.find(req.body, function (err, results){

@@ -62,4 +62,4 @@ app.post('/api/goal/achieve', dashboardController.achieveGoal);
 app.post('/api/goal/edit', dashboardController.editGoal);
 
 
-
+module.exports = db;
