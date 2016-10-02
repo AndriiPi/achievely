@@ -7,13 +7,32 @@ var profileController = require('./server/controllers/profile-controller');
 var dashboardController = require('./server/controllers/dashboard-controller.js');
 var bodyParser = require('body-parser');
 var multipartMiddleware = multipart();
+var mongodb = require("mongodb");
+var ObjectID = mongodb.ObjectID;
 
 
 
-var mongodbUri = 'mongodb://andriipi:andriipi1@ds012345-a0.mlab.com:56789,ds012345-a1.mlab.com:56790/admin?replicaSet=rs-ds01234';
+// Create a database variable outside of the database connection callback to reuse the connection pool in your app.
+var db;
 
+// Connect to the database before starting the application server.
+mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
+  if (err) {
+	console.log(err);
+	process.exit(1);
+  }
 
-mongoose.connect(mongodbUri);
+  // Save database object from the callback for reuse.
+  db = database;
+  console.log("Database connection ready");
+
+  // Initialize the app.
+  var server = app.listen(process.env.PORT || 8080, function () {
+	var port = server.address().port;
+	console.log("App now running on port", port);
+  });
+});
+
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
@@ -43,8 +62,4 @@ app.post('/api/goal/achieve', dashboardController.achieveGoal);
 app.post('/api/goal/edit', dashboardController.editGoal);
 
 
-
-app.listen("3000", function(){
-	console.log("Server is running on a port 3000");
-});
 
