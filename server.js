@@ -13,7 +13,7 @@ var mongodb = require("mongodb");
 var db;
 
 // Connect to the database before starting the application server.
-mongodb.MongoClient.connect('mongodb://heroku_38xqxdmg:andriipi@ds035016.mlab.com:35016/heroku_38xqxdmg', function (err, database) {
+mongodb.MongoClient.connect('mongodb://<heroku_38xqxdmg>:<andriipi>@ds035016.mlab.com:35016/heroku_38xqxdmg', function (err, database) {
   if (err) {
 	console.log(err);
 	process.exit(1);
