@@ -1,14 +1,11 @@
 var express = require("express");
 var mongoose = require('mongoose');
 var app = express();
-var multipart = require('connect-multiparty');
 var authenticationController = require('./server/controllers/authentication-controller');
-var profileController = require('./server/controllers/profile-controller');
 var dashboardController = require('./server/controllers/dashboard-controller.js');
 var bodyParser = require('body-parser');
-var multipartMiddleware = multipart();
 var mongodb = require("mongodb");
-var ObjectID = mongodb.ObjectID;
+
 
 
 
@@ -36,7 +33,7 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
-app.use(multipartMiddleware);
+
 
 
 

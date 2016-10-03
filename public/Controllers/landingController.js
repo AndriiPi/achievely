@@ -17,7 +17,7 @@ console.log($scope.newUser.email.length);
 
 
 			}).error(function(error){
-
+			  console.log(error);
 			})
 		  }
 	   else{
