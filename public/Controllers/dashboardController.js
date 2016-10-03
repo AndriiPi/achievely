@@ -1,4 +1,4 @@
-angular.module('dovalley').controller('DashboardController', ['$scope', '$http', "$state", function ($scope, $http, $state, $route) {
+angular.module('dovalley').controller('DashboardController', ['$scope', '$http', "$state", function ($scope, $http) {
 	$scope.user = JSON.parse(localStorage['User-Data']) || undefined;
 	$scope.userGoals = [];
 	$scope.username = $scope.user.username;
