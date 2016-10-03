@@ -14,8 +14,8 @@ angular.module('dovalley', ['ui.router'])
 						controller: 'HeaderController'
 					},
 					 'content': {
-						 templateUrl: 'public/views/dashboard.html',
-						 controller:  'DashboardController'
+						 templateUrl: 'public/views/landing.html',
+						 controller: 'LandingController'
 					 },
 					'footer': {
 						templateUrl: 'public/views/footer.html'
